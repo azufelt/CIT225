@@ -1,0 +1,116 @@
+:root {
+  --main: hsla(32, 100%, 49%, 1);
+  --lightmain: hsla(37, 98%, 50%, 1);
+  --blue: hsla(192, 70%, 43%, 1);
+  --dark: hsla(200, 95%, 14%, 1);
+  --yellow: hsla(43, 100%, 51%, 1);
+  --lightblue: hsla(199, 64%, 73%, 1);
+  --lightblue: hsla(186, 77%, 37%, 0.5);
+}
+html {
+  font-family: "Montserrat", Arial, sans-serif;
+  background-color: var(--lightmain);
+}
+body {
+  background-color: white;
+  color: var(--dark);
+  max-width: 800px;
+}
+h1 {
+  font-family: "Playfair Display", times, serif;
+  font-size: 4rem;
+  color: var(--main);
+  margin-bottom: 0.5rem;
+}
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", arial, sans-serif;
+  color: var(--yellow);
+}
+.gridbox {
+  padding: 3%;
+}
+header {
+  text-align: center;
+  background-color: var(--dark);
+  padding-bottom: 4rem;
+}
+main {
+  margin: 2rem 0;
+}
+
+main ~ section > h2 {
+  text-align: center;
+  font-size: 2rem;
+}
+main > section {
+  padding: 0.5rem;
+}
+main > section > h2 {
+  font-size: 2rem;
+}
+header > section,
+header a {
+  color: var(--yellow);
+  padding: 1%;
+  white-space: nowrap;
+}
+footer {
+  text-align: center;
+}
+a {
+  text-decoration: none;
+  color: var(--dark);
+  padding: 0.5rem;
+}
+a:hover {
+  background-color: var(--lightblue);
+}
+li {
+  padding: 0.5rem 0;
+}
+.vocab {
+  font-weight: bolder;
+  font-size: larger;
+}
+.assignments {
+  padding: 1rem;
+}
+
+/* ----------large screen------- */
+@media only screen and (min-width: 600px) {
+  body {
+    max-width: 85%;
+    margin: 0 auto;
+  }
+
+  .gridbox {
+    display: flex;
+    flex-direction: column;
+  }
+  .contentbox {
+    display: flex;
+  }
+  .contentbox > section {
+    border-left: 2px solid var(--main);
+    width: 100%;
+  }
+  .contentbox > section > h2 {
+    margin-left: 3rem;
+  }
+  aside {
+    padding: 5%;
+  }
+  header > section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  footer {
+    background-color: var(--lightmain);
+    padding: 1rem;
+  }
+}
