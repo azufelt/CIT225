@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Ashley Zufelt" />
+  <link type="normalize/css" rel="stylesheet" href="#" />
+  <link type="text/css" rel="stylesheet" href="css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <script src="/js/script.js" defer></script>
+  <title>Ashley Zufelt Frontend CIT225</title>
+</head>
+
+<body>
+  <div class="notepad"></div>
+  <div class="gridbox">
+    <header>
+      <h1>Week 3</h1>
+      <h2>CIT 225 Database Design & Dev</h2>
+      <section>
+        <h2><a href="../index.html">Menu</a></h2>
+        <p>Case Study</p>
+        <p>January 20, 2022</p>
+      </section>
+    </header>
+    <main class="contentbox">
+      <aside>
+        <h2>Case Study:</h2>
+        <p class="casestudy">
+          You have had a profitable second week at your new company. You now
+          know how to use Structured Query Language (SQL) mechanics to write
+          queries.
+          <br /><br />
+          Your boss gave you a new task. This week, you should learn how to
+          explain the various filtering techniques used in the WHERE clause.
+          Your boss would like you to be able to compare and contrast the use
+          of equality comparisons, inequality comparisons, range comparisons,
+          and lookup operators like the IN operator.
+          <br /><br />
+          You should return and report with a 3–5 paragraph report that
+          clearly explains
+
+          <span class="task">what you learned about the various comparison operators in the
+            WHERE clause.</span>
+          This paper should qualify what you learned by experimenting with the
+          technology.
+        </p>
+      </aside>
+      <section>
+        <h3>Keywords/Definitions</h3>
+        <ul>
+          <li>
+            WHERE clause--
+            <ul>
+              <li>AND</li>
+              <li>OR</li>
+            </ul>
+          </li>
+          <li>equality comparisons</li>
+          <li>inequality comparisons</li>
+          <li>range comparisons</li>
+          <li>lookup operators</li>
+        </ul>
+      </section>
+    </main>
+    <section class="report">
+      <h2>Report</h2>
+      <a href="https://realpython.com/python-mysql/">
+        <img src="images/MySQL-and-Python_Watermarked.webp" alt="python sql database" /></a>
+      <div>
+        <h3>Explain Various WHERE clauses--</h3>
+        <p>
+          <pre>WHERE</pre> clause is a signifcant tool in querying to retrieve the correct data that is also delivered
+          in farr more manageable amounts that returning such a large data-set.<br><br>
+          Here is an example of if we wanted to find all the customers with the first name of "Ashley":
+          <pre>
+SELECT *
+FROM customer
+WHERE first_name = 'Ashley'</pre>
+          In our movie rental database, on the customer table, these are the results that are returned:
+          <img src="images/where_results.png" alt="database query results">
+          That's a nice short list! </p>
+      </div>
+      <div class="fullwidth">
+        <p>
+          It's not always that short though, and so sometimes we may want to find something more specific and we can
+          combine
+          <pre>WHERE</pre> clauses to filter out even more data. Here we are using just a find
+          <pre>WHERE</pre> the first name is equal to whichever name we have selected.
+          We could also add in other filters by using the terms
+          <pre>AND</pre> and
+          <pre>OR</pre> When additional terms are used, then the filtered search must return a boolean match (True or
+          False) for each of the terms it is given.
+        </p>
+      </div>
+
+      <div class="fullwidth">
+        <h3>Comparison Operators--</h3>
+        <p>Comparison Operators are the expression or operation that is used to make a comparison when filtering. It's
+          similat to a child sorting blocks, and looking for the red one to go in the red slot, blue one to go in the
+          blue slot, etc. When searching for data and making a filter request, we might be looking for:
+          <ul>
+            <li>Find all customers who spent more than $100</li>
+            <li>Find sales from the weekend </li>
+            <li>Find sales over $100</li>
+          </ul>
+          We could certainly get both those sets of data and try to manuall manipulate it, and do some
+          cross-referencing... OR, we could use a combined filtering process that might be something more like:
+          <ul>
+            <li>Find all customer who spent more that $100 on a weekend</li>
+            <li>
+              <pre>
+        SELECT customer_name
+        FROM customer
+        WHERE (price >= 100) AND (purchase_day = 'Saturday' OR purchase_day = 'Sunday')</pre>
+            </li>
+          </ul>
+        </p>
+        <p>Using dates and numeric values utlize a range condition, where it doesn't evaluate to only True/False, within
+          that match there is a range it could be TRUE by...  searching for something within a date range, for example, first quarter. Or searching within a specific number or alphabet range. </p>
+          <p>Using filter parametes within a <pre>WHERE</pre>clause is essentially when deleting or updating data from a database. It helps target the correct piece of data so we aren't accidentally affecting the wrong item.</p>
+        <p>
+          As we can see from the following table there are many different operators that could be used to accurately specify a
+          search query.
+        </p>
+
+        <img src="images/comparison_operators.png">
+
+        <p>
+
+        </p>
+      </div>
+  </div>
+  </section>
+  </div>
+  <footer>&copy;<span id="currentyear"></span> | Ashley Zufelt</footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+  <script>
+    WebFont.load({
+      google: {
+        families: [
+          "Permanent Marker",
+          "Shadows Into Light Two",
+          "Montserrat",
+        ],
+      },
+    });
+  </script>
+</body>
+
+</html>
