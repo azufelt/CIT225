@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Ashley Zufelt" />
+  <link type="normalize/css" rel="stylesheet" href="#" />
+  <link type="text/css" rel="stylesheet" href="css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <script src="/js/script.js" defer></script>
+  <title>Ashley Zufelt Frontend CIT225</title>
+</head>
+
+<body>
+  <div class="notepad"></div>
+  <div class="gridbox">
+    <header>
+      <h1>Week 5</h1>
+      <h2>CIT 225 Database Design & Dev</h2>
+      <section>
+        <h2><a href="../index.html">Menu</a></h2>
+        <p>Case Study</p>
+        <p>February 4, 2022</p>
+      </section>
+    </header>
+    <main class="contentbox">
+      <aside>
+        <h2>Project: Return & Report</h2>
+        <p class="casestudy">
+            A project management application that lives inside Gospel Living Circles. 
+        </p>
+         <img src="images/erd-project-management.png" alt="database erd">
+        
+      
+      </aside>
+      <section class="task">
+        <h3>Task List:</h3>
+        <ul>
+          <li>Fix table str/int/varchar</li>
+          <li>account for membership authentication/external table</li>
+          <li>add table for who gets invited?</li>
+          <li>Publish on date?</li>
+        </ul>
+        
+      </section>
+    </main>
+    <section class="report">
+      <h2>Designing the Tables and ERD</h2>
+      <div>
+
+
+         <ul class="long-list">
+           <li>USER</li>
+           <ul>
+             <li>PK-id</li>
+             <li>FK-cicle-user</li>
+             <li>username</li>
+             <li>password</li>
+             <li>first name</li>
+             <li>last name</li>
+             <li>phone</li>
+             <li>email</li>
+             <li>Calling title</li>
+
+           </ul>
+           <li>CIRCLE-USER</li>
+           <ul>
+            <li>PK-id</li>
+            <li>FK-user</li>
+            <li>FK-circle_group</li>
+           </ul>
+           <li>CIRCLES-GROUP</li>
+           <ul>
+             <li>PK-id</li>
+             <li>FK-project</li>
+             <li>FK-circle-user</li>
+
+           </ul>
+           <li>PROJECT-OWNER</li>
+           <ul>
+             <li>PK-id</li>
+             <li>FK-circle</li>
+             <li>FK-project</li>
+
+           </ul>
+           <li>CONTRIBUTING-CIRCLES-GROUP</li>
+           <ul>
+             <li>PK-id</li>
+             <li>FK-project</li>
+             <li>FK-circle_group</li>
+
+           </ul>
+           <li>PROJECT</li>
+           <ul>
+            <li>PK-id</li>
+            <li>FK-date</li>
+            <li>FK-tasks</li>
+            <li>FK-organizing circle</li>
+            <li>title</li>
+            <li>location</li>
+            <li>description</li>
+            <li>end date</li>
+
+
+            <li></li>
+           </ul>
+           <li>TASKS</li>
+           <ul>
+             <li>PK-id</li>
+             <li>FK-parent_project</li>
+             <li>FK-owner</li>
+             <li>FK-contributors</li>
+             <li>FK-status</li>
+             <li>FK-date</li>
+             <li>title</li>
+             <li>start date</li>
+             <li>end date</li>
+             <li>budget</li>
+             <li>description</li>
+
+           </ul>
+           <li>TASK-OWNER</li>
+           <ul>
+             <li>PK-id</li>
+             <li>FK-tasks</li>
+             <li>FK-user</li>
+           </ul>
+           <li>TASK-CONTRIBUTORS</li>
+           <ul>
+             <li>PK-id</li>
+             <li>FK-tasks</li>
+             <li>FK-members/users/circles?</li>
+
+           </ul>
+           <li>STATUS-LIST</li>
+           <ul>
+            <li>PK-id</li>
+            <li>FK-task-status</li>
+            <li>ideas</li>
+            <li>to-do</li>
+            <li>in-progress</li>
+            <li>done</li>
+            <li>needs attention</li>
+
+           </ul>
+           <li>TASK-STATUS</li>
+           <ul>
+             <li>PK-id</li>
+             <li>FK-status</li>
+             <li>FK-task</li>
+           </ul>
+           <li>CALENDAR</li>
+           <ul>
+            <li>PK-id</li>
+            <li>FK-dates</li>
+            <li>FK-tasks</li>
+            <li>FK-projects</li>
+           </ul>
+           <li>DATE(DEADLINES)</li>
+           <ul>
+            <li>PK-id</li>
+            <li>FK-calendar</li>
+            <li>FK-project</li>
+            <li>FK-tasks</li>
+            <li>day</li>
+            <li>week</li>
+            <li>month</li>
+            <li>year</li>
+            <li>day-of-year</li>
+           </ul>
+         </ul>
+
+       
+      </div>
+
+
+  </div>
+  </section>
+  </div>
+  <footer>&copy;<span id="currentyear"></span> | Ashley Zufelt</footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+  <script>
+    WebFont.load({
+      google: {
+        families: [
+          "Permanent Marker",
+          "Shadows Into Light Two",
+          "Montserrat",
+        ],
+      },
+    });
+  </script>
+</body>
+
+</html>
