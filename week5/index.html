@@ -1,210 +1,493 @@
 <!DOCTYPE html>
 <html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Ashley Zufelt" />
+    <link type="normalize/css" rel="stylesheet" href="#" />
+    <link type="text/css" rel="stylesheet" href="css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <script src="/js/script.js" defer></script>
+    <title>Ashley Zufelt Frontend CIT225</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="author" content="Ashley Zufelt" />
-  <link type="normalize/css" rel="stylesheet" href="#" />
-  <link type="text/css" rel="stylesheet" href="css/main.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <script src="/js/script.js" defer></script>
-  <title>Ashley Zufelt Frontend CIT225</title>
-</head>
-
-<body>
-  <div class="notepad"></div>
-  <div class="gridbox">
-    <header>
-      <h1>Week 5</h1>
-      <h2>CIT 225 Database Design & Dev</h2>
-      <section>
-        <h2><a href="../index.html">Menu</a></h2>
-        <p>Case Study</p>
-        <p>February 4, 2022</p>
-      </section>
-    </header>
-    <main class="contentbox">
-      <aside>
-        <h2>Project: Return & Report</h2>
-        <p class="casestudy">
-            A project management application that lives inside Gospel Living Circles. 
-        </p>
-         <img src="images/erd-project-management.png" alt="database erd">
-        
-      
-      </aside>
-      <section class="task">
+  <body>
+    <div class="notepad"></div>
+    <div class="gridbox">
+      <header>
+        <h1>Week 5</h1>
+        <h2>CIT 225 Database Design & Dev</h2>
+        <section>
+          <h2><a href="../index.html">Menu</a></h2>
+          <p>Case Study</p>
+          <p>February 4, 2022</p>
+        </section>
+      </header>
+      <main class="contentbox">
+        <aside>
+          <h2>Project: Return & Report</h2>
+          <p class="casestudy">
+            A project management application that lives inside Gospel Living
+            Circles.
+          </p>
+          <img src="images/erd-project-management.png" alt="database erd" />
+        </aside>
+        <section class="task">
           <h3>Dev Issues:</h3>
-        <ul>
-          <li>Unsure about making additional relationships, or retrieve data via relational paths and filtering methods:</li>
           <ul>
             <li>
-              -List all of a user's projects that have tasks to do this week. 
+              Unsure about making additional relationships, or retrieve data via
+              relational paths and filtering methods:
             </li>
-            <li>>User >>project >>>tasks >>>>date</li>
+            <ul>
+              <li>
+                -List all of a user's projects that have tasks to do this week.
+              </li>
+              <li>>User >>project >>>tasks >>>>date</li>
+            </ul>
+            <li>Handling dates/times</li>
           </ul>
-          <li>Handling dates/times</li>
+          <h3>Task List:</h3>
+          <ul>
+            <li>Fix table str/int/varchar</li>
+            <li>account for membership authentication/external table</li>
+            <li>add table for who gets invited?</li>
+            <li>Publish on date?</li>
+          </ul>
+          <h3>Helpful links:</h3>
+          <ul>
+            <li>
+              <a
+                href="https://towardsdatascience.com/data-analysis-in-mysql-operators-joins-and-more-in-relational-databases-26c0a968e61e"
+                target="_blank"
+                >Relational Databases</a
+              >
+            </li>
+          </ul>
+        </section>
+      </main>
+      <section class="report">
+        <h2>Designing the Tables and ERD</h2>
+        <div>
+          <ul class="long-list">
+            <li>USER</li>
+            <ul>
+              <li>PK-id</li>
+              <li>FK-cicle-user</li>
+              <li>username</li>
+              <li>password</li>
+              <li>first name</li>
+              <li>last name</li>
+              <li>phone</li>
+              <li>email</li>
+              <li>Calling title</li>
+            </ul>
+            <li>CIRCLE-USER</li>
+            <ul>
+              <li>PK-id</li>
+              <li>FK-user</li>
+              <li>FK-circle_group</li>
+            </ul>
+            <li>CIRCLES-GROUP</li>
+            <ul>
+              <li>PK-id</li>
+              <li>FK-project</li>
+              <li>FK-circle-user</li>
+            </ul>
+            <li>PROJECT-OWNER</li>
+            <ul>
+              <li>PK-id</li>
+              <li>FK-circle</li>
+              <li>FK-project</li>
+            </ul>
+            <li>CONTRIBUTING-CIRCLES-GROUP</li>
+            <ul>
+              <li>PK-id</li>
+              <li>FK-project</li>
+              <li>FK-circle_group</li>
+            </ul>
+            <li>PROJECT</li>
+            <ul>
+              <li>PK-id</li>
+              <li>FK-date</li>
+              <li>FK-tasks</li>
+              <li>FK-organizing circle</li>
+              <li>title</li>
+              <li>location</li>
+              <li>description</li>
+              <li>end date</li>
 
-        </ul>
-        <h3>Task List:</h3>
-        <ul>
-          <li>Fix table str/int/varchar</li>
-          <li>account for membership authentication/external table</li>
-          <li>add table for who gets invited?</li>
-          <li>Publish on date?</li>
-        </ul>
-        
+              <li></li>
+            </ul>
+            <li>TASKS</li>
+            <ul>
+              <li>PK-id</li>
+              <li>FK-parent_project</li>
+              <li>FK-owner</li>
+              <li>FK-contributors</li>
+              <li>FK-status</li>
+              <li>FK-date</li>
+              <li>title</li>
+              <li>start date</li>
+              <li>end date</li>
+              <li>budget</li>
+              <li>description</li>
+            </ul>
+            <li>TASK-OWNER</li>
+            <ul>
+              <li>PK-id</li>
+              <li>FK-tasks</li>
+              <li>FK-user</li>
+            </ul>
+            <li>TASK-CONTRIBUTORS</li>
+            <ul>
+              <li>PK-id</li>
+              <li>FK-tasks</li>
+              <li>FK-members/users/circles?</li>
+            </ul>
+            <li>STATUS-LIST</li>
+            <ul>
+              <li>PK-id</li>
+              <li>FK-task-status</li>
+              <li>ideas</li>
+              <li>to-do</li>
+              <li>in-progress</li>
+              <li>done</li>
+              <li>needs attention</li>
+            </ul>
+            <li>TASK-STATUS</li>
+            <ul>
+              <li>PK-id</li>
+              <li>FK-status</li>
+              <li>FK-task</li>
+            </ul>
+            <li>CALENDAR</li>
+            <ul>
+              <li>PK-id</li>
+              <li>FK-dates</li>
+              <li>FK-tasks</li>
+              <li>FK-projects</li>
+            </ul>
+            <li>DATE(DEADLINES)</li>
+            <ul>
+              <li>PK-id</li>
+              <li>FK-calendar</li>
+              <li>FK-project</li>
+              <li>FK-tasks</li>
+              <li>day</li>
+              <li>week</li>
+              <li>month</li>
+              <li>year</li>
+              <li>day-of-year</li>
+            </ul>
+          </ul>
+        </div>
       </section>
-    </main>
-    <section class="report">
-      <h2>Designing the Tables and ERD</h2>
-      <div>
+    </div>
+    <div>
+      <pre>
+    -- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
+USE `mydb` ;
+
+-- -----------------------------------------------------
+-- Table `mydb`.`USERS`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`USERS` (
+)
+ENGINE = InnoDB;
 
 
-         <ul class="long-list">
-           <li>USER</li>
-           <ul>
-             <li>PK-id</li>
-             <li>FK-cicle-user</li>
-             <li>username</li>
-             <li>password</li>
-             <li>first name</li>
-             <li>last name</li>
-             <li>phone</li>
-             <li>email</li>
-             <li>Calling title</li>
-
-           </ul>
-           <li>CIRCLE-USER</li>
-           <ul>
-            <li>PK-id</li>
-            <li>FK-user</li>
-            <li>FK-circle_group</li>
-           </ul>
-           <li>CIRCLES-GROUP</li>
-           <ul>
-             <li>PK-id</li>
-             <li>FK-project</li>
-             <li>FK-circle-user</li>
-
-           </ul>
-           <li>PROJECT-OWNER</li>
-           <ul>
-             <li>PK-id</li>
-             <li>FK-circle</li>
-             <li>FK-project</li>
-
-           </ul>
-           <li>CONTRIBUTING-CIRCLES-GROUP</li>
-           <ul>
-             <li>PK-id</li>
-             <li>FK-project</li>
-             <li>FK-circle_group</li>
-
-           </ul>
-           <li>PROJECT</li>
-           <ul>
-            <li>PK-id</li>
-            <li>FK-date</li>
-            <li>FK-tasks</li>
-            <li>FK-organizing circle</li>
-            <li>title</li>
-            <li>location</li>
-            <li>description</li>
-            <li>end date</li>
+-- -----------------------------------------------------
+-- Table `mydb`.`CIRCLES_GROUP`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`CIRCLES_GROUP` (
+  `idCIRCLES_GROUP` INT NOT NULL AUTO_INCREMENT,
+  `calling_name` VARCHAR(45) NULL,
+  `ORGANIZING_CIRCLE_idORGANIZING_CIRCLE` INT NOT NULL,
+  PRIMARY KEY (`idCIRCLES_GROUP`, `ORGANIZING_CIRCLE_idORGANIZING_CIRCLE`),
+  UNIQUE INDEX `idCIRCLES_GROUP_UNIQUE` (`idCIRCLES_GROUP` ASC) VISIBLE,
+  UNIQUE INDEX `calling_name_UNIQUE` (`calling_name` ASC) VISIBLE)
+ENGINE = InnoDB;
 
 
-            <li></li>
-           </ul>
-           <li>TASKS</li>
-           <ul>
-             <li>PK-id</li>
-             <li>FK-parent_project</li>
-             <li>FK-owner</li>
-             <li>FK-contributors</li>
-             <li>FK-status</li>
-             <li>FK-date</li>
-             <li>title</li>
-             <li>start date</li>
-             <li>end date</li>
-             <li>budget</li>
-             <li>description</li>
-
-           </ul>
-           <li>TASK-OWNER</li>
-           <ul>
-             <li>PK-id</li>
-             <li>FK-tasks</li>
-             <li>FK-user</li>
-           </ul>
-           <li>TASK-CONTRIBUTORS</li>
-           <ul>
-             <li>PK-id</li>
-             <li>FK-tasks</li>
-             <li>FK-members/users/circles?</li>
-
-           </ul>
-           <li>STATUS-LIST</li>
-           <ul>
-            <li>PK-id</li>
-            <li>FK-task-status</li>
-            <li>ideas</li>
-            <li>to-do</li>
-            <li>in-progress</li>
-            <li>done</li>
-            <li>needs attention</li>
-
-           </ul>
-           <li>TASK-STATUS</li>
-           <ul>
-             <li>PK-id</li>
-             <li>FK-status</li>
-             <li>FK-task</li>
-           </ul>
-           <li>CALENDAR</li>
-           <ul>
-            <li>PK-id</li>
-            <li>FK-dates</li>
-            <li>FK-tasks</li>
-            <li>FK-projects</li>
-           </ul>
-           <li>DATE(DEADLINES)</li>
-           <ul>
-            <li>PK-id</li>
-            <li>FK-calendar</li>
-            <li>FK-project</li>
-            <li>FK-tasks</li>
-            <li>day</li>
-            <li>week</li>
-            <li>month</li>
-            <li>year</li>
-            <li>day-of-year</li>
-           </ul>
-         </ul>
-
-       
-      </div>
+-- -----------------------------------------------------
+-- Table `mydb`.`USER`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`USER` (
+  `idUSER` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `first_name` VARCHAR(45) NOT NULL,
+  `last_name` VARCHAR(45) NOT NULL,
+  `phone_num` INT NOT NULL,
+  `CIRCLES_GROUP_idCIRCLES_GROUP` INT NOT NULL,
+  `CIRCLES_GROUP_ORGANIZING_CIRCLE_idORGANIZING_CIRCLE` INT NOT NULL,
+  PRIMARY KEY (`idUSER`, `CIRCLES_GROUP_idCIRCLES_GROUP`, `CIRCLES_GROUP_ORGANIZING_CIRCLE_idORGANIZING_CIRCLE`),
+  UNIQUE INDEX `idUSER_UNIQUE` (`idUSER` ASC) VISIBLE,
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE,
+  UNIQUE INDEX `password_UNIQUE` (`password` ASC) VISIBLE,
+  INDEX `fk_USER_CIRCLES_GROUP1_idx` (`CIRCLES_GROUP_idCIRCLES_GROUP` ASC, `CIRCLES_GROUP_ORGANIZING_CIRCLE_idORGANIZING_CIRCLE` ASC) VISIBLE,
+  CONSTRAINT `fk_USER_CIRCLES_GROUP1`
+    FOREIGN KEY (`CIRCLES_GROUP_idCIRCLES_GROUP` , `CIRCLES_GROUP_ORGANIZING_CIRCLE_idORGANIZING_CIRCLE`)
+    REFERENCES `mydb`.`CIRCLES_GROUP` (`idCIRCLES_GROUP` , `ORGANIZING_CIRCLE_idORGANIZING_CIRCLE`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 
-  </div>
-  </section>
-  </div>
-  <footer>&copy;<span id="currentyear"></span> | Ashley Zufelt</footer>
+-- -----------------------------------------------------
+-- Table `mydb`.`CALENDAR`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`CALENDAR` (
+  `idCALENDAR` INT NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`idCALENDAR`),
+  UNIQUE INDEX `idCALENDAR_UNIQUE` (`idCALENDAR` ASC) VISIBLE)
+ENGINE = InnoDB;
 
-  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
-  <script>
-    WebFont.load({
-      google: {
-        families: [
-          "Permanent Marker",
-          "Shadows Into Light Two",
-          "Montserrat",
-        ],
-      },
-    });
-  </script>
-</body>
 
+-- -----------------------------------------------------
+-- Table `mydb`.`DATE-MODULE`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`DATE-MODULE` (
+  `idDATE-MODULE` INT NOT NULL AUTO_INCREMENT,
+  `dayofyear` VARCHAR(45) NULL,
+  `day` VARCHAR(45) NULL,
+  `week` VARCHAR(45) NULL,
+  `month` VARCHAR(45) NULL,
+  `year` VARCHAR(45) NULL,
+  `CALENDAR_idCALENDAR` INT NOT NULL,
+  PRIMARY KEY (`idDATE-MODULE`, `CALENDAR_idCALENDAR`),
+  UNIQUE INDEX `idDATE-MODULE_UNIQUE` (`idDATE-MODULE` ASC) VISIBLE,
+  INDEX `fk_DATE-MODULE_CALENDAR1_idx` (`CALENDAR_idCALENDAR` ASC) VISIBLE,
+  CONSTRAINT `fk_DATE-MODULE_CALENDAR1`
+    FOREIGN KEY (`CALENDAR_idCALENDAR`)
+    REFERENCES `mydb`.`CALENDAR` (`idCALENDAR`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`PROJECTS`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`PROJECTS` (
+  `idPROJECTS` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(45) NULL,
+  `location` VARCHAR(45) NULL,
+  `description` VARCHAR(45) NULL,
+  `start_date` VARCHAR(45) NULL,
+  `CALENDAR_idCALENDAR` INT NOT NULL,
+  `DATE-MODULE_idDATE-MODULE` INT NOT NULL,
+  `DATE-MODULE_CALENDAR_idCALENDAR` INT NOT NULL,
+  `CIRCLES_GROUP_idCIRCLES_GROUP` INT NOT NULL,
+  `CIRCLES_GROUP_ORGANIZING_CIRCLE_idORGANIZING_CIRCLE` INT NOT NULL,
+  PRIMARY KEY (`idPROJECTS`, `DATE-MODULE_idDATE-MODULE`, `DATE-MODULE_CALENDAR_idCALENDAR`),
+  UNIQUE INDEX `idPROJECTS_UNIQUE` (`idPROJECTS` ASC) VISIBLE,
+  INDEX `fk_PROJECTS_CALENDAR1_idx` (`CALENDAR_idCALENDAR` ASC) VISIBLE,
+  INDEX `fk_PROJECTS_DATE-MODULE1_idx` (`DATE-MODULE_idDATE-MODULE` ASC, `DATE-MODULE_CALENDAR_idCALENDAR` ASC) VISIBLE,
+  INDEX `fk_PROJECTS_CIRCLES_GROUP1_idx` (`CIRCLES_GROUP_idCIRCLES_GROUP` ASC, `CIRCLES_GROUP_ORGANIZING_CIRCLE_idORGANIZING_CIRCLE` ASC) VISIBLE,
+  CONSTRAINT `fk_PROJECTS_CALENDAR1`
+    FOREIGN KEY (`CALENDAR_idCALENDAR`)
+    REFERENCES `mydb`.`CALENDAR` (`idCALENDAR`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_PROJECTS_DATE-MODULE1`
+    FOREIGN KEY (`DATE-MODULE_idDATE-MODULE` , `DATE-MODULE_CALENDAR_idCALENDAR`)
+    REFERENCES `mydb`.`DATE-MODULE` (`idDATE-MODULE` , `CALENDAR_idCALENDAR`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_PROJECTS_CIRCLES_GROUP1`
+    FOREIGN KEY (`CIRCLES_GROUP_idCIRCLES_GROUP` , `CIRCLES_GROUP_ORGANIZING_CIRCLE_idORGANIZING_CIRCLE`)
+    REFERENCES `mydb`.`CIRCLES_GROUP` (`idCIRCLES_GROUP` , `ORGANIZING_CIRCLE_idORGANIZING_CIRCLE`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`TASK-OWNER`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`TASK-OWNER` (
+  `idTASK-OWNER` INT NOT NULL AUTO_INCREMENT,
+  `USER_idUSER` INT NOT NULL,
+  PRIMARY KEY (`idTASK-OWNER`, `USER_idUSER`),
+  UNIQUE INDEX `idTASK-OWNER_UNIQUE` (`idTASK-OWNER` ASC) VISIBLE,
+  INDEX `fk_TASK-OWNER_USER1_idx` (`USER_idUSER` ASC) VISIBLE,
+  CONSTRAINT `fk_TASK-OWNER_USER1`
+    FOREIGN KEY (`USER_idUSER`)
+    REFERENCES `mydb`.`USER` (`idUSER`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`STATUS_LIST`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`STATUS_LIST` (
+  `idSTATUS` INT NOT NULL AUTO_INCREMENT,
+  `ideas` VARCHAR(45) NULL,
+  `to-do` VARCHAR(45) NULL,
+  `in-progress` VARCHAR(45) NULL,
+  `done` VARCHAR(45) NULL,
+  `needs attention` VARCHAR(45) NULL,
+  PRIMARY KEY (`idSTATUS`),
+  UNIQUE INDEX `idSTATUS_UNIQUE` (`idSTATUS` ASC) VISIBLE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`TASKS`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`TASKS` (
+  `idTASKS` INT NOT NULL AUTO_INCREMENT,
+  `assign-date` DATETIME NULL,
+  `end-date` DATETIME NULL,
+  `description` VARCHAR(45) NULL,
+  `budget` INT NULL,
+  `TASK-OWNER_idTASK-OWNER` INT NOT NULL,
+  `STATUS_LIST_idSTATUS` INT NOT NULL,
+  `DATE-MODULE_idDATE-MODULE` INT NOT NULL,
+  `DATE-MODULE_CALENDAR_idCALENDAR` INT NOT NULL,
+  `PROJECTS_idPROJECTS` INT NOT NULL,
+  `PROJECTS_DATE-MODULE_idDATE-MODULE` INT NOT NULL,
+  `PROJECTS_DATE-MODULE_CALENDAR_idCALENDAR` INT NOT NULL,
+  PRIMARY KEY (`idTASKS`, `TASK-OWNER_idTASK-OWNER`, `PROJECTS_idPROJECTS`, `PROJECTS_DATE-MODULE_idDATE-MODULE`, `PROJECTS_DATE-MODULE_CALENDAR_idCALENDAR`),
+  UNIQUE INDEX `idTASKS_UNIQUE` (`idTASKS` ASC) VISIBLE,
+  INDEX `fk_TASKS_TASK-OWNER1_idx` (`TASK-OWNER_idTASK-OWNER` ASC) VISIBLE,
+  INDEX `fk_TASKS_STATUS_LIST1_idx` (`STATUS_LIST_idSTATUS` ASC) VISIBLE,
+  INDEX `fk_TASKS_DATE-MODULE1_idx` (`DATE-MODULE_idDATE-MODULE` ASC, `DATE-MODULE_CALENDAR_idCALENDAR` ASC) VISIBLE,
+  INDEX `fk_TASKS_PROJECTS1_idx` (`PROJECTS_idPROJECTS` ASC, `PROJECTS_DATE-MODULE_idDATE-MODULE` ASC, `PROJECTS_DATE-MODULE_CALENDAR_idCALENDAR` ASC) VISIBLE,
+  CONSTRAINT `fk_TASKS_TASK-OWNER1`
+    FOREIGN KEY (`TASK-OWNER_idTASK-OWNER`)
+    REFERENCES `mydb`.`TASK-OWNER` (`idTASK-OWNER`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_TASKS_STATUS_LIST1`
+    FOREIGN KEY (`STATUS_LIST_idSTATUS`)
+    REFERENCES `mydb`.`STATUS_LIST` (`idSTATUS`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_TASKS_DATE-MODULE1`
+    FOREIGN KEY (`DATE-MODULE_idDATE-MODULE` , `DATE-MODULE_CALENDAR_idCALENDAR`)
+    REFERENCES `mydb`.`DATE-MODULE` (`idDATE-MODULE` , `CALENDAR_idCALENDAR`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_TASKS_PROJECTS1`
+    FOREIGN KEY (`PROJECTS_idPROJECTS` , `PROJECTS_DATE-MODULE_idDATE-MODULE` , `PROJECTS_DATE-MODULE_CALENDAR_idCALENDAR`)
+    REFERENCES `mydb`.`PROJECTS` (`idPROJECTS` , `DATE-MODULE_idDATE-MODULE` , `DATE-MODULE_CALENDAR_idCALENDAR`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`CIRCLES_GROUP_has_USER`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`CIRCLES_GROUP_has_USER` (
+  `CIRCLES_GROUP_idCIRCLES_GROUP` INT NOT NULL,
+  `USER_idUSER` INT NOT NULL,
+  PRIMARY KEY (`CIRCLES_GROUP_idCIRCLES_GROUP`, `USER_idUSER`),
+  INDEX `fk_CIRCLES_GROUP_has_USER_USER1_idx` (`USER_idUSER` ASC) VISIBLE,
+  INDEX `fk_CIRCLES_GROUP_has_USER_CIRCLES_GROUP_idx` (`CIRCLES_GROUP_idCIRCLES_GROUP` ASC) VISIBLE,
+  CONSTRAINT `fk_CIRCLES_GROUP_has_USER_CIRCLES_GROUP`
+    FOREIGN KEY (`CIRCLES_GROUP_idCIRCLES_GROUP`)
+    REFERENCES `mydb`.`CIRCLES_GROUP` (`idCIRCLES_GROUP`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_CIRCLES_GROUP_has_USER_USER1`
+    FOREIGN KEY (`USER_idUSER`)
+    REFERENCES `mydb`.`USER` (`idUSER`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`CIRCLES_GROUP_has_PROJECTS`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`CIRCLES_GROUP_has_PROJECTS` (
+  `CIRCLES_GROUP_idCIRCLES_GROUP` INT NOT NULL,
+  `CIRCLES_GROUP_ORGANIZING_CIRCLE_idORGANIZING_CIRCLE` INT NOT NULL,
+  `PROJECTS_idPROJECTS` INT NOT NULL,
+  `PROJECTS_DATE-MODULE_idDATE-MODULE` INT NOT NULL,
+  `PROJECTS_DATE-MODULE_CALENDAR_idCALENDAR` INT NOT NULL,
+  PRIMARY KEY (`CIRCLES_GROUP_idCIRCLES_GROUP`, `CIRCLES_GROUP_ORGANIZING_CIRCLE_idORGANIZING_CIRCLE`, `PROJECTS_idPROJECTS`, `PROJECTS_DATE-MODULE_idDATE-MODULE`, `PROJECTS_DATE-MODULE_CALENDAR_idCALENDAR`),
+  INDEX `fk_CIRCLES_GROUP_has_PROJECTS_PROJECTS1_idx` (`PROJECTS_idPROJECTS` ASC, `PROJECTS_DATE-MODULE_idDATE-MODULE` ASC, `PROJECTS_DATE-MODULE_CALENDAR_idCALENDAR` ASC) VISIBLE,
+  INDEX `fk_CIRCLES_GROUP_has_PROJECTS_CIRCLES_GROUP1_idx` (`CIRCLES_GROUP_idCIRCLES_GROUP` ASC, `CIRCLES_GROUP_ORGANIZING_CIRCLE_idORGANIZING_CIRCLE` ASC) VISIBLE,
+  CONSTRAINT `fk_CIRCLES_GROUP_has_PROJECTS_CIRCLES_GROUP1`
+    FOREIGN KEY (`CIRCLES_GROUP_idCIRCLES_GROUP` , `CIRCLES_GROUP_ORGANIZING_CIRCLE_idORGANIZING_CIRCLE`)
+    REFERENCES `mydb`.`CIRCLES_GROUP` (`idCIRCLES_GROUP` , `ORGANIZING_CIRCLE_idORGANIZING_CIRCLE`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_CIRCLES_GROUP_has_PROJECTS_PROJECTS1`
+    FOREIGN KEY (`PROJECTS_idPROJECTS` , `PROJECTS_DATE-MODULE_idDATE-MODULE` , `PROJECTS_DATE-MODULE_CALENDAR_idCALENDAR`)
+    REFERENCES `mydb`.`PROJECTS` (`idPROJECTS` , `DATE-MODULE_idDATE-MODULE` , `DATE-MODULE_CALENDAR_idCALENDAR`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`TASKS_has_USER`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`TASKS_has_USER` (
+  `TASKS_idTASKS` INT NOT NULL,
+  `TASKS_TASK-OWNER_idTASK-OWNER` INT NOT NULL,
+  `USER_idUSER` INT NOT NULL,
+  `USER_CIRCLES_GROUP_idCIRCLES_GROUP` INT NOT NULL,
+  `USER_CIRCLES_GROUP_ORGANIZING_CIRCLE_idORGANIZING_CIRCLE` INT NOT NULL,
+  PRIMARY KEY (`TASKS_idTASKS`, `TASKS_TASK-OWNER_idTASK-OWNER`, `USER_idUSER`, `USER_CIRCLES_GROUP_idCIRCLES_GROUP`, `USER_CIRCLES_GROUP_ORGANIZING_CIRCLE_idORGANIZING_CIRCLE`),
+  INDEX `fk_TASKS_has_USER_USER1_idx` (`USER_idUSER` ASC, `USER_CIRCLES_GROUP_idCIRCLES_GROUP` ASC, `USER_CIRCLES_GROUP_ORGANIZING_CIRCLE_idORGANIZING_CIRCLE` ASC) VISIBLE,
+  INDEX `fk_TASKS_has_USER_TASKS1_idx` (`TASKS_idTASKS` ASC, `TASKS_TASK-OWNER_idTASK-OWNER` ASC) VISIBLE,
+  CONSTRAINT `fk_TASKS_has_USER_TASKS1`
+    FOREIGN KEY (`TASKS_idTASKS` , `TASKS_TASK-OWNER_idTASK-OWNER`)
+    REFERENCES `mydb`.`TASKS` (`idTASKS` , `TASK-OWNER_idTASK-OWNER`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_TASKS_has_USER_USER1`
+    FOREIGN KEY (`USER_idUSER` , `USER_CIRCLES_GROUP_idCIRCLES_GROUP` , `USER_CIRCLES_GROUP_ORGANIZING_CIRCLE_idORGANIZING_CIRCLE`)
+    REFERENCES `mydb`.`USER` (`idUSER` , `CIRCLES_GROUP_idCIRCLES_GROUP` , `CIRCLES_GROUP_ORGANIZING_CIRCLE_idORGANIZING_CIRCLE`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+  </pre
+      >
+    </div>
+    <footer>&copy;<span id="currentyear"></span> | Ashley Zufelt</footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({
+        google: {
+          families: [
+            "Permanent Marker",
+            "Shadows Into Light Two",
+            "Montserrat",
+          ],
+        },
+      });
+    </script>
+  </body>
 </html>
