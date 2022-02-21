@@ -1,128 +1,141 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="Ashley Zufelt" />
-    <link type="normalize/css" rel="stylesheet" href="#" />
-    <link type="text/css" rel="stylesheet" href="css/main.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <script src="/js/script.js" defer></script>
-    <title>Ashley Zufelt Frontend CIT225</title>
-  </head>
 
-  <body>
-    <div class="notepad"></div>
-    <div class="gridbox">
-      <header>
-        <h1>Week 7</h1>
-        <h2>CIT 225 Database Design & Dev</h2>
-        <section>
-          <h2><a href="../index.html">Menu</a></h2>
-          <p>Project Update</p>
-          <p>February 18, 2022</p>
-        </section>
-      </header>
-      <main class="contentbox">
-        <aside>
-          <h2>Projec Updatet: Return & Report</h2>
-          <p class="casestudy">
-            Started to wrap my head around the design so I could begin the
-            database development. I initially started with a mobile size
-            mock-up, but decided to switch to a desktop view for now. ONLY
-            because as I've been researching different project management
-            applications and how they flow, I'm intrigued by several different
-            types, and wanted to have enough room to layout the forms. For this
-            database project, I have initially put all of the INSERT statement
-            forms onto one view page (per project/task set). However on a mobile
-            device I think it would be best handled in a paginated progression.
-          </p>
-          <p class="casestudy">
-            This is where the task started taking on a life of it's own... I log
-            the user in {SELECT} and then the program would authenticate the
-            user. Then the start a new project view is delivered, and the user
-            can then input the basic elements of their project {INSERT}. After
-            that project item is built, the user could continue on to make
-            additional Tasks and eventually subtasks, doo-dads, or tiny-tasks.
-            Those would each rely on an {INSERT} statement as well.
-          </p>
-          <p class="casestudy">
-            When we see the project or workspace overview, we can see each line
-            has a trach can or edit symbal. When the user clicks on either of
-            those they will be able to delete {DELETE} or edit{SELECT, UPDATE}
-            the item, respectively.
-          </p>
-        </aside>
-        <section class="task">
-          <h3>Dev Issues:</h3>
-          <ul>
-            <li>Questioning "How FAR?"
-              <li>Do I need sub-tasks</li>
-              <li>Multiple views</li>
-              <li>Filters for selecting all circles, some circles</li>
-            </li>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Ashley Zufelt" />
+  <link type="normalize/css" rel="stylesheet" href="#" />
+  <link type="text/css" rel="stylesheet" href="css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <script src="/js/script.js" defer></script>
+  <title>Ashley Zufelt Frontend CIT225</title>
+</head>
 
-
-            </ul>
-          </ul>
-          <h3>Task List:</h3>
-          <ul>
-            <li>
-              add table for who gets invited?
-              <ul>
-                <li>
-                  Instead, lets add a button to "add to group calendar" or
-                  something. So then it could go and be populated on a users
-                  specific calendar.
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <h3>Resources:</h3>
-          <ul>
-            <li><a href="https://mplaza.training/articles-and-guides/gantt-chart-vs-kanban-board/">Charts</a></li>
-          </ul>
-        </section>
-      </main>
-      <section class="report">
-        <h2>Interactive App Mock-Up 1.0</h2>
-        <h4>Go on! Give it a try!!]<br>
-        Don't get too excited, only the click-y parts work. 😅</h4>
-        
-        <!-- <a href="">Project Management App</a> -->
-      </section>
+<body>
+  <div class="notepad"></div>
+  <div class="gridbox">
+    <header>
+      <h1>Week 7</h1>
+      <h2>CIT 225 Database Design & Dev</h2>
       <section>
-        <iframe
-          width="1000"
-          height="562.5"
-          src="https://xd.adobe.com/embed/a0d4d277-8aa9-4640-a28a-180fd3cfe6ae-f587/"
-          frameborder="0"
-          allowfullscreen
-        ></iframe>
-
-        <!-- How do you perform string generation with the CONCAT built-in function?
-What are the two escape mechanisms that let you backquote an apostrophe embedded in a string?
-What the QUOTE built-in function does and why it's important querying data already inserted or updated?
-How can string manipulation let you examine and manage substrings, like the LENGTH, SUBSTRING, LOCATE, POSITION, STUFF, REPLACE, and INSERT built-in functions?
-How arithmetic functions let you calculate results as columns in rows and control numeric precision of numbers?
-How format masks constructed with date format components from Table 7-4 let you convert strings to dates and vice versa? -->
+        <h2><a href="../index.html">Menu</a></h2>
+        <p>Project Update</p>
+        <p>February 18, 2022</p>
       </section>
-    </div>
+    </header>
+    <main class="contentbox">
+      <aside>
+        <h2>Project Update: Return & Report</h2>
+        <p class="casestudy">
+          Worked on creating INSERT statements for tables. got stuck on how to link the tables together... obviously
+          need to have some initial tables in place first, so it can go and fetch the ID's of whichever table it gets
+          authenticated by.
+        </p>
+        <p class="casestudy">Spent some time trying to brainstorm ways that the table data could be used other than
+          basic insert/updates. Like, pulling a financial report for a quarter, a project, a year? Could gather the
+          financials for the project or the working team and deliver some data back to the user, using some COUNT, SUM,
+          AVG statements. This would prove beneficial to keep a running tab of how much has been spent on the project to
+          date. It would also possibly be useful to SUM the amount of time that has been spent on a task? And/or display
+          to the specific user how many tasks THEY has specificly. So, could grab all tasks that belong to this user,
+          COUNT rows of unique tasks, then display a report on a dashboard type view. </p>
+          <pre>
+INSERT INTO user (
+  username
+  , password
+  , email
+  , first_name
+  , last_name
+  , phone_num
+  )
+VALUES (
+  'azufelt'
+  , 'password'
+  , 'ashley.zufelt@gmail.com'
+  , 'Ashley'
+  , 'Zufelt'
+  , 123-123-1234)
+  ;
+          </pre>
 
-    <footer>&copy;<span id="currentyear"></span> | Ashley Zufelt</footer>
+      </aside>
+      <section class="task">
+        <h3>Dev Issues:</h3>
+        <ul>
+          <li>Maybe I should drop the initial calling/role authentication?
+          </li>
+          <li>List out all callings/IDs and build out that table first. </li>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
-    <script>
-      WebFont.load({
-        google: {
-          families: [
-            "Permanent Marker",
-            "Shadows Into Light Two",
-            "Montserrat",
-          ],
-        },
-      });
-    </script>
-  </body>
+
+        </ul>
+        </ul>
+        <h3>Task List:</h3>
+        <ul>
+          <li>INSERT base data to table, so foreign keys can reference it when building users and projects. Including:
+            <ul>
+              <li>Organization:
+                <ul>
+                  <li>Young Women</li>
+                  <li>Ward Council</li>
+                  <li>Primary</li>
+                  <li>Relief Society</li>
+                </ul>
+              </li>
+              <li>Calling Title within Organization:
+                <ul>
+                  <li>President</li>
+                  <li>Counselor</li>
+                  <li>Secretary</li>
+                  <li>Teacher</li>
+                </ul>
+              </li>
+              <li>THEN can add a user with previous info</li>
+            </ul>
+          </li>
+        </ul>
+        <h3>Resources:</h3>
+        <ul>
+          <li><a
+              href="https://stackoverflow.com/questions/4775520/how-to-insert-values-in-table-with-foreign-key-using-mysql">Inserting
+              Foreign Keys</a></li>
+        </ul>
+      </section>
+    </main>
+    <section class="report">
+      <h2>Focus Tables</h2>
+
+      <!-- <a href="">Project Management App</a> -->
+    </section>
+   
+    <section>
+       <img src="images/table-insert.png" alt="insert statement">
+       <br>
+       <br>
+        <br>
+       <br>
+        <br>
+       <br>
+      <img src="images/erd.png" alt="erd diagram">
+
+
+    </section>
+  </div>
+
+  <footer>&copy;<span id="currentyear"></span> | Ashley Zufelt</footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+  <script>
+    WebFont.load({
+      google: {
+        families: [
+          "Permanent Marker",
+          "Shadows Into Light Two",
+          "Montserrat",
+        ],
+      },
+    });
+  </script>
+</body>
+
 </html>
