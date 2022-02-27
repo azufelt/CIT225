@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Ashley Zufelt" />
+  <link type="normalize/css" rel="stylesheet" href="#" />
+  <link type="text/css" rel="stylesheet" href="css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <script src="/js/script.js" defer></script>
+  <title>Ashley Zufelt Frontend CIT225</title>
+</head>
+
+<body>
+  <div class="notepad"></div>
+  <div class="gridbox">
+    <header>
+      <h1>Week 8</h1>
+      <h2>CIT 225 Database Design & Dev</h2>
+      <section>
+        <h2><a href="../index.html">Menu</a></h2>
+        <p>Project Update</p>
+        <p>February 25, 2022</p>
+      </section>
+    </header>
+    <main class="contentbox">
+      <aside>
+        <h2>Project Update: Return & Report</h2>
+        <p class="casestudy">
+          Worked on creating INSERT statements for tables. got stuck on how to link the tables together... obviously
+          need to have some initial tables in place first, so it can go and fetch the ID's of whichever table it gets
+          authenticated by.
+        </p>
+        <p class="casestudy">Spent some time trying to brainstorm ways that the table data could be used other than
+          basic insert/updates. Like, pulling a financial report for a quarter, a project, a year? Could gather the
+          financials for the project or the working team and deliver some data back to the user, using some COUNT, SUM,
+          AVG statements. This would prove beneficial to keep a running tab of how much has been spent on the project to
+          date. It would also possibly be useful to SUM the amount of time that has been spent on a task? And/or display
+          to the specific user how many tasks THEY has specificly. So, could grab all tasks that belong to this user,
+          COUNT rows of unique tasks, then display a report on a dashboard type view. </p>
+          <pre>
+INSERT INTO user (
+  username
+  , password
+  , email
+  , first_name
+  , last_name
+  , phone_num
+  )
+VALUES (
+  'azufelt'
+  , 'password'
+  , 'ashley.zufelt@gmail.com'
+  , 'Ashley'
+  , 'Zufelt'
+  , 123-123-1234)
+  ;
+          </pre>
+
+      </aside>
+      <section class="task">
+        <h3>Dev Issues:</h3>
+        <ul>
+          <li>Maybe I should drop the initial calling/role authentication?
+          </li>
+          <li>List out all callings/IDs and build out that table first. </li>
+
+
+        </ul>
+        </ul>
+        <h3>Task List:</h3>
+        <ul>
+          <li>INSERT base data to table, so foreign keys can reference it when building users and projects. Including:
+            <ul>
+              <li>Organization:
+                <ul>
+                  <li>Young Women</li>
+                  <li>Ward Council</li>
+                  <li>Primary</li>
+                  <li>Relief Society</li>
+                </ul>
+              </li>
+              <li>Calling Title within Organization:
+                <ul>
+                  <li>President</li>
+                  <li>Counselor</li>
+                  <li>Secretary</li>
+                  <li>Teacher</li>
+                </ul>
+              </li>
+              <li>THEN can add a user with previous info</li>
+            </ul>
+          </li>
+        </ul>
+        <h3>Resources:</h3>
+        <ul>
+          <li><a
+              href="https://stackoverflow.com/questions/4775520/how-to-insert-values-in-table-with-foreign-key-using-mysql">Inserting
+              Foreign Keys</a></li>
+        </ul>
+      </section>
+    </main>
+    <section class="report">
+      <h2>Focus Tables</h2>
+
+      <!-- <a href="">Project Management App</a> -->
+    </section>
+   
+    <section>
+       <img src="images/table-insert.png" alt="insert statement">
+       <br>
+       <br>
+        <br>
+       <br>
+        <br>
+       <br>
+      <img src="images/erd.png" alt="erd diagram">
+
+
+    </section>
+  </div>
+
+  <footer>&copy;<span id="currentyear"></span> | Ashley Zufelt</footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+  <script>
+    WebFont.load({
+      google: {
+        families: [
+          "Permanent Marker",
+          "Shadows Into Light Two",
+          "Montserrat",
+        ],
+      },
+    });
+  </script>
+</body>
+
+</html>
