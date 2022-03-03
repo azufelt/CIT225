@@ -29,34 +29,144 @@
       <aside>
         <h2>Project Update: Return & Report</h2>
         <p class="casestudy">
-          Worked on creating INSERT statements for tables. got stuck on how to link the tables together... obviously
-          need to have some initial tables in place first, so it can go and fetch the ID's of whichever table it gets
-          authenticated by.
+        <h2>Tables:</h2>
+            <h3>"Organization"</h3>
+                 <table>
+            <tr>
+              <th>Name</th>
+              <th>ID</th>
+            </tr>
+            <tr>
+              <td>Bishopric</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>Relief Society</td>
+              <td>2</td>
+            </tr>
+             <tr>
+              <td>Elders Quorum</td>
+              <td>3</td>
+            </tr>
+             <tr>
+              <td>Sunday School</td>
+              <td>4</td>
+            </tr>
+             <tr>
+              <td>Primary</td>
+              <td>5</td>
+            </tr>
+             <tr>
+              <td>Young Women</td>
+              <td>6</td>
+            </tr>
+             <tr>
+              <td>Young Men</td>
+              <td>7</td>
+            </tr>
+
+          </table>
+            
+<h3>"Calling by Position"</h3>
+<table>
+
+  <tr>
+    <th>Calling Title</th>
+    <th>ID</th>
+  </tr>
+  <tr>
+    <td>Bishop</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>President</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>first_counselor</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>second_counselor</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>secretary</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>assistant</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>specialist</td>
+    <td>6</td>
+  </tr>
+  <tr>
+    <td>teacher</td>
+    <td>7</td>
+  </tr>
+  <tr>
+    <td>Ward Council</td>
+    <td>8</td>
+  </tr>
+</table>
+
+<h3>"Circles group by Position/calling"</h3>
+                 <table>
+                   
+            <tr>
+              <th>Circles name</th>
+              <th>Which callings? </th>
+            </tr>
+            <tr>
+              <td>Ward Council</td>
+              <td>
+                <ul><li>Presidents of: YW, Primary, RS, EQ</li>
+                <li>All members of Bishopric (Bishop, counselors, secretary, clerk)</li></ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Bishopric</td>
+              <td>Bishop, counselors</td>
+            </tr>
+            <tr>
+              <td>Primary Presidency</td>
+              <td>All members</td>
+            </tr>
+             <tr>
+              <td>Primary All  callings/teachers</td>
+              <td>3</td>
+            </tr>
+             <tr>
+              <td>Primary All parents of children</td>
+              <td>4</td>
+            </tr>
+             <tr>
+              <td>YW Pres</td>
+              <td>5</td>
+            </tr>
+             <tr>
+              <td>YW all leaders & youth</td>
+              <td>6</td>
+            </tr>
+             <tr>
+              <td>YW class presidency</td>
+              <td>7</td>
+            </tr>
+             <tr>
+              <td>Sunday School Pres</td>
+              <td>8</td>
+            </tr>
+             <tr>
+              <td>Sunday School Gospel Doctrine Adults</td>
+              <td>8</td>
+            </tr>
+          </table>
         </p>
-        <p class="casestudy">Spent some time trying to brainstorm ways that the table data could be used other than
-          basic insert/updates. Like, pulling a financial report for a quarter, a project, a year? Could gather the
-          financials for the project or the working team and deliver some data back to the user, using some COUNT, SUM,
-          AVG statements. This would prove beneficial to keep a running tab of how much has been spent on the project to
-          date. It would also possibly be useful to SUM the amount of time that has been spent on a task? And/or display
-          to the specific user how many tasks THEY has specificly. So, could grab all tasks that belong to this user,
-          COUNT rows of unique tasks, then display a report on a dashboard type view. </p>
-          <pre>
-INSERT INTO user (
-  username
-  , password
-  , email
-  , first_name
-  , last_name
-  , phone_num
-  )
-VALUES (
-  'azufelt'
-  , 'password'
-  , 'ashley.zufelt@gmail.com'
-  , 'Ashley'
-  , 'Zufelt'
-  , 123-123-1234)
-  ;
+
+        <pre>
+
           </pre>
 
       </aside>
@@ -107,15 +217,15 @@ VALUES (
 
       <!-- <a href="">Project Management App</a> -->
     </section>
-   
+
     <section>
-       <img src="images/table-insert.png" alt="insert statement">
-       <br>
-       <br>
-        <br>
-       <br>
-        <br>
-       <br>
+      <img src="images/table-insert.png" alt="insert statement">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
       <img src="images/erd.png" alt="erd diagram">
 
 
