@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Ashley Zufelt" />
+    <link type="normalize/css" rel="stylesheet" href="#" />
+    <link type="text/css" rel="stylesheet" href="css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <script src="/js/script.js" defer></script>
+    <title>Ashley Zufelt Frontend CIT225</title>
+  </head>
+
+  <body>
+    <div class="notepad"></div>
+    <div class="gridbox">
+      <header>
+        <h1>Week 10</h1>
+        <h2>CIT 225 Database Design & Dev</h2>
+        <section>
+          <h2><a href="../index.html">Menu</a></h2>
+          <p>Project Update</p>
+          <p>March 18, 2022</p>
+        </section>
+      </header>
+      <main class="contentbox">
+        <aside>
+          <h2>Project Update: Return & Report</h2>
+          <h3>Alter Table Statements</h3>
+          <p> I ended up needing to write several queries to make adjustments to the DB or the tables. 
+            <pre>
+USE circles_app_dev;
+
+-- Special include statements --
+
+-- added a column to name ward unit
+ ALTER TABLE `circles_app_dev` . `ward_unit`
+  ADD unit_name varchar(40) NOT NULL
+     AFTER idward_unit
+     ;
+     
+  -- changed to allow null for dev   
+ALTER TABLE `circles_app_dev` . `calling_has_organization`
+  MODIFY ward_unit_idward_unit INT NULL
+  ;
+  
+  -- needed to drop column and make a one-to-one relationship isntead of one to many
+ALTER TABLE `circles_app_dev`.`calling_has_organization` 
+DROP FOREIGN KEY `fk_calling_has_organization_circle_group1`;
+ALTER TABLE `circles_app_dev`.`calling_has_organization` 
+DROP COLUMN `circle_group_circle_group_id`,
+DROP INDEX `fk_calling_has_organization_circle_group1_idx` ;
+;
+
+-- added columns to create a one-to-one relationship
+ALTER TABLE `circles_app_dev`.`circle_group` 
+DROP COLUMN `organization_id`,
+ADD COLUMN `calling_has_organization_calling_id` INT NOT NULL AFTER `app_circle_guid`,
+ADD COLUMN `calling_has_organization_organization_id` INT NOT NULL AFTER `calling_has_organization_calling_id`,
+ADD INDEX `calling_has_organization_organization_id_idx` (`calling_has_organization_organization_id` ASC) VISIBLE,
+ADD INDEX `calling_has_organization_calling_id_idx` (`calling_has_organization_calling_id` ASC) VISIBLE;
+;
+ALTER TABLE `circles_app_dev`.`circle_group` 
+ADD CONSTRAINT `calling_has_organization_organization_id`
+  FOREIGN KEY (`calling_has_organization_organization_id`)
+  REFERENCES `circles_app_dev`.`calling_has_organization` (`calling_calling_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `calling_has_organization_calling_id`
+  FOREIGN KEY (`calling_has_organization_calling_id`)
+  REFERENCES `circles_app_dev`.`calling_has_organization` (`calling_calling_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+  
+  -- changed date on project from string to datetime
+  ALTER TABLE `circles_app_dev`.`project` 
+CHANGE COLUMN `start_date` `start_date` DATETIME NULL DEFAULT NULL ;
+
+
+            </pre>
+          </p>
+        </aside>
+
+    <footer>&copy;<span id="currentyear"></span> | Ashley Zufelt</footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({
+        google: {
+          families: [
+            "Permanent Marker",
+            "Shadows Into Light Two",
+            "Montserrat",
+          ],
+        },
+      });
+    </script>
+  </body>
+</html>

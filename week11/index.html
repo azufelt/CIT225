@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Ashley Zufelt" />
+    <link type="normalize/css" rel="stylesheet" href="#" />
+    <link type="text/css" rel="stylesheet" href="css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <script src="/js/script.js" defer></script>
+    <title>Ashley Zufelt Frontend CIT225</title>
+  </head>
+
+  <body>
+    <div class="notepad"></div>
+    <div class="gridbox">
+      <header>
+        <h1>Week 10</h1>
+        <h2>CIT 225 Database Design & Dev</h2>
+        <section>
+          <h2><a href="../index.html">Menu</a></h2>
+          <p>Project Update</p>
+          <p>March 18, 2022</p>
+        </section>
+      </header>
+      <main class="contentbox">
+        <aside>
+          <h2>Project Update: Return & Report</h2>
+          <h3>Continue CRUD statements</h3>
+          <p>
+            Continued with the CRUD statements. Hardest parts this week were getting the database re-built after I decided to drop the schema in favor of making adjustments to the ERD and then re-building... but for some reason the built didn't want to go through. 
+          </p>
+          <p>I was finally able to get the database re-built, and I built a dev copy so I could work in it without making too many permanent mistakes. lol</p>
+          <p>After getting it all re-built, I still struggled a bit with what data I would need in each table, how they would get populated by an end-user, etc.</p>
+          <p>I started at the "end" of my ERD, or like the items that really come before a user would ever log in to the application. This meant that I needed to build and insert a few entire tables so I could have some authorization levels to use as foreign keys in subsequent <pre>INSERT</pre> statements</p>
+          <br />
+          <p class="casestudy">
+            Something that helped me understand how to connect tables together and insert a foreign key when making the table was: any time there is a Foreign Key, you need to write a subquery. So it can go over to the other table, get the id that it needs where something conditional happens. 
+          </p>
+
+       
+        </aside>
+        <section class="task">
+          <h3>Dev Issues:</h3>
+          <ul>
+            <li>
+              <a href="alter.html">Alter Statements</a>
+            </li>
+          </ul>
+          <h3>Task List:</h3>
+          <ul></ul>
+          <h3>Resources:</h3>
+          <ul>
+            <li>
+              <a
+                href="https://www.techonthenet.com/mysql/tables/alter_table.php"
+                target="_blank"
+              >mySQL: ALTER TABLE Statements</a>
+            </li>
+            <li><a href="https://www.mysqltutorial.org/mysql-drop-column/" target=""_blank">mySQL: MySQL DROP COLUMN statement</a></li>
+          </ul>
+        </section>
+      </main>
+      <section class="report">
+        <h2>Focus Tables</h2>
+        <img href="images/db_columns.png" alt="screen shot of database columns.">
+        <pre>
+ -- ---------------#1 Organization Table    ---------
+ 
+INSERT INTO `circles_app_dev`.`organization`
+(
+`name`)
+VALUES
+('bishopric'),
+('relief society'),
+('elders quorum'),
+('sunday school'),
+('primary'),
+('young women'),
+('young men')
+;
+
+SELECT `organization_id` FROM `circles_app_dev`.`organization`
+WHERE `name` = 'young women'
+;
+ -- ---------------#2 Calling Table    ---------
+ INSERT INTO `circles_app_dev`.`calling`
+(`title`)
+VALUES
+('president'),
+('first_counselor'),
+('second_counselor'),
+('secretary'),
+('assistant'),
+('specialist'),
+('teacher'),
+('clerk')
+;
+
+SELECT `calling_id` FROM `circles_app_dev`.`calling`
+WHERE `title` = 'president'
+;
+
+
+ -- ---------------#3 Ward_unit Table    ---------
+INSERT INTO `circles_app_dev`.`ward_unit`
+(`unit_name`)
+VALUES
+('calhoun ward')
+;
+
+SELECT `idward_unit` FROM `circles_app_dev`.`ward_unit`
+WHERE `unit_name` = 'calhoun ward'
+;
+
+
+ -- ---------------#4 calling_has_organization Table    ---------
+INSERT INTO `circles_app_dev`.`calling_has_organization`
+(
+`calling_calling_id`,
+`organization_organization_id`,
+`ward_unit_idward_unit`)
+VALUES
+(
+(SELECT `calling_id` FROM `circles_app_dev`.`calling`
+WHERE `title` = 'president'
+),
+(SELECT `organization_id` FROM `circles_app_dev`.`organization`
+WHERE `name` = 'young women'
+),
+(SELECT `idward_unit` FROM `circles_app_dev`.`ward_unit`
+WHERE `unit_name` = 'calhoun ward')
+);
+
+SELECT `calling_calling_id` FROM `circles_app_dev`.`calling_has_organization`;
+SELECT `organization_organization_id` FROM `circles_app_dev`.`calling_has_organization`;
+
+
+
+ -- ---------------#5 circles_group Table    ---------
+ INSERT INTO `circles_app_dev`.`circle_group`
+(
+`group_name`,
+`app_circle_guid`,
+`calling_has_organization_calling_id`,
+`calling_has_organization_organization_id`)
+VALUES
+(
+'ward council',
+'A group circle for the Ward Council',
+(SELECT `calling_calling_id` FROM `circles_app_dev`.`calling_has_organization`
+WHERE (SELECT `calling_id` FROM `circles_app_dev`.`calling`
+WHERE `title` = 'president'
+)),
+(SELECT `organization_organization_id` FROM `circles_app_dev`.`calling_has_organization`
+WHERE (SELECT `organization_id` FROM `circles_app_dev`.`organization`
+WHERE `name` = 'young women'
+)));
+
+SELECT `circle_group_id` FROM `circles_app_dev`.`circle_group`
+WHERE `name` = 'young women'
+;
+
+SELECT `circle_group_id` FROM `circles_app_dev`.`circle_group`
+WHERE calling_has_organization_organization_id = 
+;
+
+
+ 
+ -- ---------------#6 user Table    ---------
+ INSERT INTO `circles_app_dev`.`user`
+(
+`username`,
+`password`,
+`email`,
+`first_name`,
+`last_name`,
+`phone_num`)
+VALUES
+(
+'azufelt',
+'mypassword',
+'ashley.zufelt@gmail.com',
+'Ashley',
+'Zufelt',
+2108370003);
+
+SELECT `user_id` FROM `circles_app_dev`.`user`
+WHERE `username` = 'azufelt' and `email` = 'ashley.zufelt@gmail.com'
+;
+
+
+ -- ---------------#7 user_circle_group Table     ---------
+ INSERT INTO `circles_app_dev`.`user_circle_group`
+(
+`user_id`,
+`circle_group_id`)
+VALUES
+(
+(SELECT `user_id` FROM `circles_app_dev`.`user`
+WHERE `username` = 'azufelt' and `email` = 'ashley.zufelt@gmail.com'
+),
+(SELECT `circle_group_id` FROM `circles_app_dev`.`circle_group`
+WHERE `calling_has_organization_calling_id` = 1 and `calling_has_organization_organization_id` = 6
+));
+
+ -- ---------------#8 project Table   ---------
+ INSERT INTO `circles_app_dev`.`project`
+(
+`title`,
+`location`,
+`description`,
+`start_date`,
+`circle_group_id`)
+VALUES
+(
+'Ward Activity',
+'City Park',
+'Fun potluck for all families',
+2022-04-17,
+<{circle_group_id: }>);
+
+ 
+ -- ---------------#9     ---------
+ -- ---------------#10    ---------
+ -- ---------------#11    ---------
+        </pre>
+      </section>
+    </div>
+
+    <footer>&copy;<span id="currentyear"></span> | Ashley Zufelt</footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({
+        google: {
+          families: [
+            "Permanent Marker",
+            "Shadows Into Light Two",
+            "Montserrat",
+          ],
+        },
+      });
+    </script>
+  </body>
+</html>
