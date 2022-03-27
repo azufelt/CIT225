@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Ashley Zufelt" />
+    <link type="normalize/css" rel="stylesheet" href="#" />
+    <link type="text/css" rel="stylesheet" href="css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <script src="/js/script.js" defer></script>
+    <title>Ashley Zufelt Frontend CIT225</title>
+  </head>
+
+  <body>
+    <div class="notepad"></div>
+    <div class="gridbox">
+      <header>
+        <h1>Week 12</h1>
+        <h2>CIT 225 Database Design & Dev</h2>
+        <section>
+          <h2><a href="../index.html">Menu</a></h2>
+          <p>Project Update</p>
+          <p>March 25, 2022</p>
+        </section>
+      </header>
+      <main class="contentbox">
+        <aside>
+          <h2>Project Update: Return & Report</h2>
+          <h3>Continue CRUD statements</h3>
+          <p>
+            Since I already have my wireframes/UI basically done, this week I
+            continued working on mySQL queries. The inserts went together quite
+            nicely, until I got about 11 tables deep... and then my last two
+            tables won't successfully create a row because of a foreign key
+            check error.
+          </p>
+          <p>
+            After disabling the foreign key checks, yes, I got a "successful"
+            message, however still nothing was added to the table. So, clearly
+            didn't work.
+          </p>
+          <p>
+            The error is happening when I try adding a task to a project.
+            Correction... at some point some things were added to the table..
+            but it's completely out of whack now.
+          </p>
+          <br />
+          <pre>
+INSERT INTO `circles_app`.`task`
+(
+`assign-date`,
+`end-date`,
+`description`,
+`budget`,
+`owner_id`,
+`project_id`,
+`date_created`)
+VALUES
+(
+CURRENT_DATE(),
+'2022-04-1',
+'Handouts/invites',
+'0',
+1,
+3,
+CURRENT_DATE());
+          </pre>
+          <h3>Error Handling:</h3>
+          <p class="casestudy">
+            00:45:34 INSERT INTO `circles_app`.`task` ( `assign-date`,
+            `end-date`, `description`, `budget`, `owner_id`, `project_id`,
+            `date_created`) VALUES ( CURRENT_DATE(), '2022-04-1',
+            'Handouts/invites', '5', 1, 3, CURRENT_DATE()) Error Code: 1364.
+            Field 'current_status_id' doesn't have a default value 0.00034 sec
+          </p>
+        </aside>
+        <section class="task">
+          <h3>Dev Issues:</h3>
+          <ul></ul>
+          <h3>Task List:</h3>
+          <ul></ul>
+          <h3>Resources:</h3>
+          <ul>
+            <li>
+              <a
+                href="https://www.mysqltutorial.org/mysql-join/"
+                target="_blank"
+                >Joins Made Easy</a
+              >
+            </li>
+          </ul>
+        </section>
+      </main>
+      <section class="report">
+        <h2>Focus Tables</h2>
+        <img src="images/tasktable.png" alt="task table" />
+        <img src="images/owner_task.png" alt="owner task table" />
+      </section>
+    </div>
+
+    <footer>&copy;<span id="currentyear"></span> | Ashley Zufelt</footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({
+        google: {
+          families: [
+            "Permanent Marker",
+            "Shadows Into Light Two",
+            "Montserrat",
+          ],
+        },
+      });
+    </script>
+  </body>
+</html>
